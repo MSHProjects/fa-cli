@@ -6,7 +6,6 @@
 Welcome to fa-cli's documentation!
 ==================================
 
-Contents:
 
 .. toctree::
    :maxdepth: 2
