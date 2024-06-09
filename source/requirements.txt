@@ -5,3 +5,11 @@ sphinxcontrib-napoleon>=0.7
 sphinxcontrib-httpdomain>=1.8.0
 sphinxcontrib-jsmath>=1.0.1
 sphinxcontrib-programoutput>=0.16
+typer[all]
+rich
+gitpython
+sqlalchemy
+fastapi
+uvicorn
+psycog2-binary
+ayncpg
