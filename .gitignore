@@ -1,3 +1,4 @@
 fa_cli.egg-info
 dist
 build
+upload.sh
