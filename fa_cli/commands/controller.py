@@ -1,6 +1,6 @@
 import os
 import re
-
+import shutil
 controller_content = """from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 from src.controller.core import GenericController, Controller
@@ -41,6 +41,8 @@ def create_controller(path: str):
     files = os.listdir(root_dir)
     if not ("app.py" in files):
         return "Please change to the root directory"
+    if not os.path.exists(os.path.join(root_dir, "src/controller")):
+        return "Please make sure you didn't change the names of the project directories"
     controller_path = os.path.join(root_dir, "src/controller", path)
     os.makedirs(controller_path, exist_ok=True)
     # create the file router and schema and add the router content
@@ -56,4 +58,18 @@ def create_controller(path: str):
         pass
     with open(os.path.join(root_dir, "src/controller", "__init__.py"), "a") as f:
         f.write(init_update.format(path.replace("/", ".")))
+    return True
+
+
+def delete_controller(path: str):
+    root_dir = os.getcwd()
+    if not os.path.exists(os.path.join(root_dir, "src/controller")):
+        return "Please make sure you didn't change the names of the project directories"
+    folders = path.split("/")
+    controller_path = os.path.join(root_dir, "src/controller")
+    for folder in folders:
+        controller_path = os.path.join(controller_path, folder)
+        if not os.path.exists(os.path.join(controller_path)):
+            return f"Please make sure that the following path exists: {controller_path}"
+    shutil.rmtree(controller_path, ignore_errors=True)
     return True
