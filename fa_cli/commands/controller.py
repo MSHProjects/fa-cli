@@ -72,4 +72,10 @@ def delete_controller(path: str):
         if not os.path.exists(os.path.join(controller_path)):
             return f"Please make sure that the following path exists: {controller_path}"
     shutil.rmtree(controller_path, ignore_errors=True)
+    module = path.replace("/", ".")
+    with open(os.path.join(root_dir, "src/controller", "__init__.py"), "r") as f:
+        modules = f.readlines()
+    modules = [x for x in modules if not module in x]
+    with open(os.path.join(root_dir, "src/controller", "__init__.py"), "w") as f:
+        f.writelines(modules)
     return True

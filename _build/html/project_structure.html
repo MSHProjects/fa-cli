@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Project Structure &#8212; fa-cli 1.1.2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=6f037312"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CLI Commands" href="cli_commands.html" />
+    <link rel="prev" title="Welcome to fa-cli’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="project-structure">
+<h1>Project Structure<a class="headerlink" href="#project-structure" title="Link to this heading">¶</a></h1>
+<p>This document explains the structure of the project and how each module interacts.</p>
+<section id="directory-structure">
+<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>.
+├── .gitignore
+├── app.py
+├── configs.py
+├── .env
+├── migration_rollback.sh
+├── requirements.txt
+├── yoyo.ini
+├── src/
+│   ├── common/
+│   │   ├── hasher.py
+│   │   └── jwt_token.py
+│   ├── controller/
+│   │   ├── core.py
+│   │   ├── __init__.py
+│   │   └── user/
+│   │       ├── router.py
+│   │       └── schema.py
+│   ├── db/
+│   │   ├── connector.py
+│   │   ├── core_orm.py
+│   │   ├── migration.py
+│   │   └── tables/
+│   │       └── user.py
+│   └── middleware/
+│       ├── jwt_middleware.py
+│       └── logging_middleware.py
+└── .vscode/
+    └── launch.json
+</pre></div>
+</div>
+</section>
+<section id="module-descriptions">
+<h2>Module Descriptions<a class="headerlink" href="#module-descriptions" title="Link to this heading">¶</a></h2>
+<p><strong>app.py</strong>:
+Initializes the FastAPI application, sets up middleware, and includes controllers.</p>
+<p><strong>configs.py</strong>:
+Loads environment variables and configurations, including database and JWT settings.</p>
+<p><strong>.env</strong>:
+Stores environment variables.</p>
+<p><strong>migration_rollback.sh</strong>:
+Script to rollback migrations using Yoyo.</p>
+<p><strong>requirements.txt</strong>:
+Lists project dependencies.</p>
+<p><strong>yoyo.ini</strong>:
+Configuration file for Yoyo migrations.</p>
+<p><strong>src/common/</strong>:
+Contains common utilities like password hashing and JWT token management.</p>
+<p><strong>src/controller/</strong>:
+Defines API controllers. The <cite>core.py</cite> defines base controller classes, and the <cite>user</cite> directory contains the user-specific controller and schemas.</p>
+<p><strong>src/db/</strong>:
+Handles database connections, ORM models, and migrations.</p>
+<p><strong>src/middleware/</strong>:
+Implements custom middleware for JWT authentication and logging.</p>
+<p><strong>.vscode/launch.json</strong>:
+Configuration for debugging in Visual Studio Code.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">fa-cli</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#directory-structure">Directory Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-descriptions">Module Descriptions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cli_commands.html">CLI Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controller.html">Controller Module in Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_orm.html">BaseORM Module in Details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remarks.html">Important remarks</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to fa-cli’s documentation!</a></li>
+      <li>Next: <a href="cli_commands.html" title="next chapter">CLI Commands</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Soulaimen Hammami.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/project_structure.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
