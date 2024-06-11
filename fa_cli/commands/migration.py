@@ -23,14 +23,22 @@ def create_migration_file(name: str):
     if not os.path.exists(migration_path):
         return f"Folder not found in this path [bold] {migration_path}\nPlease make sure that didn't change the project template!"
     migration_files = os.listdir(migration_path)
+
     enumerations = [file.split("_")[0] for file in migration_files]
     enumerations = sorted(enumerations)
+    message = ''
     try:
-        index = int(enumerations[-1])+1
-        print(enumerations)
-        migration_filename = f"{index:04d}_{name}.py"
+        if len(enumerations) == 0:
+            migration_filename = f"0001_{name}.py"
+            with open(os.path.join(migration_path, migration_filename), "w") as f:
+                f.write(content)
+        else:
+            index = int(enumerations[-1])+1
+            print(enumerations)
+            migration_filename = f"{index:04d}_{name}.py"
+            with open(os.path.join(migration_path, migration_filename), "w") as f:
+                f.write(content)
     except Exception as e:
         return f"Got an error when creating the migration file make sure that you didn't put silly names!!\nError: {e}"
-    with open(os.path.join(migration_path, migration_filename), "w") as f:
-        f.write(content)
+
     return True
